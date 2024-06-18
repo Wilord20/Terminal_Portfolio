@@ -12,23 +12,29 @@ const commands = {
     term.echo(`List of available commands: ${help}`);
   },
   echo(...args) {
-      term.echo(args.join(' '));
-  }
+    term.echo(args.join(" "));
+  },
 };
 
-const command_list = ['clear'].concat(Object.keys(commands));
+const command_list = ["clear"].concat(Object.keys(commands));
 const help = formatter.format(command_list);
 
 const term = $("body").terminal(commands, {
   greetings: false,
   checkArity: false,
-  exit: false
+  exit: false,
 });
 
 function ready() {
   term
     .echo(() => rainbow(render("Terminal Portfolio")))
-    .echo('<white>Welcome to my Terminal Portfolio</white>\n')
+    .echo(
+      <white>
+        {args.map((text) => {
+          return <>{text} </>;
+        })}
+      </white>
+    )
     .resume();
 }
 
