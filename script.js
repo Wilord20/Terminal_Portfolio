@@ -51,7 +51,7 @@ function rand(max) {
 function ready() {
  const seed = rand(256);
  term.echo(() => rainbow(render('Terminal Portfolio'), seed))
-     .echo('Welcome to my Terminal Portfolio\n').resume();
+     .echo('[[;white;]Welcome to my Terminal Portfolio]').resume();
 }
 
 function rainbow(string, seed) {
