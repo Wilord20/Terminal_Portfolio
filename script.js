@@ -18,6 +18,7 @@ const help = formatter.format(command_list);
 
 const term = $("body").terminal(commands, {
   greetings: false,
+  checkArity: false
 });
 
 function ready() {
