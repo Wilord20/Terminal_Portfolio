@@ -28,7 +28,7 @@ const term = $("body").terminal(commands, {
 function ready() {
   term
     .echo(() => rainbow(render("Terminal Portfolio")))
-    .echo("Welcome to my Terminal Portfolio\n")
+    .echo('<white>Welcome to my Terminal Portfolio</white>\n')
     .resume();
 }
 
