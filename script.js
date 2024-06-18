@@ -11,6 +11,9 @@ const commands = {
   help() {
     term.echo(`List of available commands: ${help}`);
   },
+  echo(...args) {
+      term.echo(args.join(' '));
+  }
 };
 
 const command_list = Object.keys(commands);
