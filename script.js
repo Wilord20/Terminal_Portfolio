@@ -16,12 +16,13 @@ const commands = {
   }
 };
 
-const command_list = Object.keys(commands);
+const command_list = ['clear'].concat(Object.keys(commands));
 const help = formatter.format(command_list);
 
 const term = $("body").terminal(commands, {
   greetings: false,
-  checkArity: false
+  checkArity: false,
+  exit: false
 });
 
 function ready() {
