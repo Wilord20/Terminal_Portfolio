@@ -1,4 +1,4 @@
-const font = "Slant";
+const font = "Larry 3D";
 
 figlet.defaults({ fontPath: "https://unpkg.com/figlet/fonts/" });
 figlet.preloadFonts([font], ready);
