@@ -1,16 +1,30 @@
 const font = "Larry 3D";
+const formatter = new Intl.ListFormat("en", {
+  style: "long",
+  type: "conjunction",
+});
 
 figlet.defaults({ fontPath: "https://unpkg.com/figlet/fonts/" });
 figlet.preloadFonts([font], ready);
 
-const commands = {};
+const commands = {
+  help() {
+    term.echo(`List of available commands: ${help}`);
+  },
+};
+
+const command_list = Object.keys(commands);
+const help = formatter.format(command_list);
 
 const term = $("body").terminal(commands, {
   greetings: false,
 });
 
 function ready() {
-  term.echo(() => rainbow(render("Terminal Portfolio"))).echo('Welcome to my Terminal Portfolio\n').resume();
+  term
+    .echo(() => rainbow(render("Terminal Portfolio")))
+    .echo("Welcome to my Terminal Portfolio\n")
+    .resume();
 }
 
 function render(text) {
@@ -23,34 +37,21 @@ function render(text) {
 }
 
 function rainbow(string) {
-    return lolcat.rainbow(function(char, color) {
-        char = $.terminal.escape_brackets(char);
-        return `[[;${hex(color)};]${char}]`;
-    }, string).join('\n');
+  return lolcat
+    .rainbow(function (char, color) {
+      char = $.terminal.escape_brackets(char);
+      return `[[;${hex(color)};]${char}]`;
+    }, string)
+    .join("\n");
 }
 
 function hex(color) {
-    return '#' + [color.red, color.green, color.blue].map(n => {
-        return n.toString(16).padStart(2, '0');
-    }).join('');
+  return (
+    "#" +
+    [color.red, color.green, color.blue]
+      .map((n) => {
+        return n.toString(16).padStart(2, "0");
+      })
+      .join("")
+  );
 }
-
-$(function () {
-  $("body").terminal({
-    // La funcion 'hello' requiere de una variable, en este caso 'what'
-    hello: function (what) {
-      this.echo("[[b;red;white]Hello, " + what + ". Welcome to this terminal.");
-    },
-    // Aquí 'cat' es una funcion que no necesita de una variable y solo regresará una imagen
-    cat: function (width, height) {
-      const img = $(
-        '<img src="https://placekitten.com/' + width + "/" + height + '">',
-        { raw: true }
-      );
-      // Añadimos un load y pause en caso de conexiones lentas
-      img.on("load", this.resume);
-      this.pause();
-      this.echo(img);
-    },
-  });
-});
