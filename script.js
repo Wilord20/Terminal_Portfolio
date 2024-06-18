@@ -10,10 +10,7 @@ const term = $("body").terminal(commands, {
 });
 
 function ready() {
-  term.echo(() => {
-    const ascii = render("Terminal Portfolio");
-    return `${ascii}\nWelcome to my Terminal Portfolio\n`;
-  });
+  term.echo(() => rainbow(render("Terminal Portfolio"))).echo('Welcome to my Terminal Portfolio\n').resume();
 }
 
 function render(text) {
@@ -23,6 +20,19 @@ function render(text) {
     width: cols,
     whitespaceBreak: true,
   });
+}
+
+function rainbow(string) {
+    return lolcat.rainbow(function(char, color) {
+        char = $.terminal.escape_brackets(char);
+        return `[[;${hex(color)};]${char}]`;
+    }, string).join('\n');
+}
+
+function hex(color) {
+    return '#' + [color.red, color.green, color.blue].map(n => {
+        return n.toString(16).padStart(2, '0');
+    }).join('');
 }
 
 $(function () {
