@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "figlet": "^1.7.0"
+  },
+  "name": "terminal_portfolio",
+  "version": "1.0.0",
+  "description": "Terminal portfolio",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wilord20/Terminal_Portfolio.git"
+  },
+  "keywords": [
+    "Terminal",
+    "project",
+    "personal"
+  ],
+  "author": "Edgar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wilord20/Terminal_Portfolio/issues"
+  },
+  "homepage": "https://github.com/Wilord20/Terminal_Portfolio#readme"
+}

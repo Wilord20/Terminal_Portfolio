@@ -15,6 +15,6 @@ $(function () {
             this.echo(img);
         }
     }, {
-        greetings: 'My First Web Terminal'
+        greetings: greetings.innerHTML
     });
 });
