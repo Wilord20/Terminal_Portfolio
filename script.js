@@ -54,9 +54,13 @@ const directories = {
 const dirs = Object.keys(directories);
 
 function print_dirs() {
-  term.echo(dirs.map(dir => {
-      return `[[;blue;]${dir}]`;
-  }).join('\n'));
+  term.echo(
+    dirs
+      .map((dir) => {
+        return `[[;blue;]${dir}]`;
+      })
+      .join("\n")
+  );
 }
 
 const commands = {
@@ -135,12 +139,26 @@ const term = $("body").terminal(commands, {
   greetings: false,
   checkArity: false,
   exit: false,
-  completion: true,
+  completion(string) {
+    // in every function we can use `this` to reference term object
+    const cmd = this.get_command();
+    // we process the command to extract the command name
+    // at the rest of the command (the arguments as one string)
+    const { name, rest } = $.terminal.parse_command(cmd);
+    if (["cd", "ls"].includes(name)) {
+      if (rest.startsWith("~/")) {
+        return dirs.map((dir) => `~/${dir}`);
+      }
+      if (cwd === root) {
+        return dirs;
+      }
+    }
+    return Object.keys(commands);
+  },
   prompt,
 });
 
 const re = new RegExp(`^\s*(${command_list.join("|")}) (.*)`);
-
 
 // Colors and renders
 function render(text) {
