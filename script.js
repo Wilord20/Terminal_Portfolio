@@ -16,16 +16,16 @@ const formatter = new Intl.ListFormat("en", {
 const directories = {
   education: [
     "",
-    "[[;white;]education]",
+    "<white>education</white>",
 
-    '* <a href="https://en.wikipedia.org/wiki/Kielce_University_of_Technology">Kielce University of Technology</a> [[;yellow;]"Computer Science" 2002-2007 / 2011-2014]',
-    '* <a href="https://pl.wikipedia.org/wiki/Szko%C5%82a_policealna">Post-secondary</a> Electronic School [[;yellow;]"Computer Systems" 2000-2002]',
-    '* Electronic <a href="https://en.wikipedia.org/wiki/Technikum_(Polish_education)">Technikum</a> with major [[;yellow;]"RTV" 1995-2000]',
+    '* <a href="https://en.wikipedia.org/wiki/Kielce_University_of_Technology">Kielce University of Technology</a> <yellow>"Computer Science"</yellow> 2002-2007 / 2011-2014',
+    '* <a href="https://pl.wikipedia.org/wiki/Szko%C5%82a_policealna">Post-secondary</a> Electronic School <yellow>"Computer Systems"</yellow> 2000-2002',
+    '* Electronic <a href="https://en.wikipedia.org/wiki/Technikum_(Polish_education)">Technikum</a> with major <yellow>"RTV"</yellow> 1995-2000',
     "",
   ],
   projects: [
     "",
-    "[[;white;]Open Source projects]",
+    "<white>Open Source projects</white>",
     [
       [
         "jQuery Terminal",
@@ -40,23 +40,23 @@ const directories = {
       ["Sysend.js", "https://jcu.bi/sysend", "Communication between open tabs"],
       ["Wayne", "https://jcu.bi/wayne", "Pure in browser HTTP requests"],
     ].map(([name, url, description = ""]) => {
-      return `* <a href="${url}">${name}</a> &mdash; [[;white;]${description}]`;
+      return `* <a href="${url}">${name}</a> &mdash; <white>${description}</white>`;
     }),
     "",
   ].flat(),
   skills: [
     "",
-    "[[;white;]languages]",
+    "<white>languages</white>",
 
     ["JavaScript", "TypeScript", "Python", "SQL", "PHP", "Bash"].map(
-      (lang) => `* [[;yellow;]${lang}]`
+      (lang) => `* <yellow>${lang}</yellow>`
     ),
     "",
-    "[[;white;]libraries]",
-    ["React.js", "Redux", "Jest"].map((lib) => `* [[;green;]${lib}]`),
+    "<white>libraries</white>",
+    ["React.js", "Redux", "Jest"].map((lib) => `* <green>${lib}</green>`),
     "",
-    "[[;white;]tools]",
-    ["Docker", "git", "GNU/Linux"].map((lib) => `* [[;blue;]${lib}]`),
+    "<white>tools</white>",
+    ["Docker", "git", "GNU/Linux"].map((lib) => `* <blue>${lib}</blue>`),
     "",
   ].flat(),
 };
@@ -67,7 +67,7 @@ function print_dirs() {
   term.echo(
     dirs
       .map((dir) => {
-        return `[[;blue;]${dir}]`;
+        return `<blue class="directory">${dir}</blue>`;
       })
       .join("\n")
   );
@@ -79,7 +79,7 @@ const commands = {
   },
   echo(...args) {
     if (args.length > 0) {
-      term.echo(`[[;white;]${args.join(" ")}]`);
+      term.echo(`<white>${args.join(" ")}</white>`);
     }
   },
   cd(dir = null) {
@@ -155,16 +155,26 @@ const commands = {
       }
     })();
   },
+  credits() {
+    return [
+      "",
+      "<white>Used libraries:</white>",
+      '* <a href="https://terminal.jcubic.pl">jQuery Terminal</a>',
+      '* <a href="https://github.com/patorjk/figlet.js/">Figlet.js</a>',
+      '* <a href="https://github.com/jcubic/isomorphic-lolcat">Isomorphic Lolcat</a>',
+      '* <a href="https://jokeapi.dev/">Joke API</a>',
+      "",
+    ].join("\n");
+  },
 };
 
 function prompt() {
   return `[[;#44D544;]${user}@${server}]:[[;blue;]${cwd}$] `;
 }
 
-
 const command_list = ["clear"].concat(Object.keys(commands));
 const formatted_list = command_list.map((cmd) => {
-  return `[[;white;]${cmd}]`;
+  return `<white class="command">${cmd}</white>`;
 });
 
 const help = formatter.format(formatted_list);
@@ -192,16 +202,29 @@ const term = $("body").terminal(commands, {
   prompt,
 });
 
+//You click a command from help and you can execute it
+term.on("click", ".command", function () {
+  const command = $(this).text();
+  term.exec(command);
+});
+
+term.on("click", ".directory", function () {
+  const dir = $(this).text();
+  term.exec(`cd ~/${dir}`);
+});
+
 const re = new RegExp(`^\s*(${command_list.join("|")}) (.*)`);
 
 // Colors and renders
 function render(text) {
   const cols = term.cols();
-  return trim(figlet.textSync(text, {
-    font: font,
-    width: cols,
-    whitespaceBreak: true,
-  }));
+  return trim(
+    figlet.textSync(text, {
+      font: font,
+      width: cols,
+      whitespaceBreak: true,
+    })
+  );
 }
 
 function rand(max) {
@@ -212,7 +235,7 @@ function ready() {
   const seed = rand(256);
   term
     .echo(() => rainbow(render("Terminal Portfolio"), seed))
-    .echo("[[;white;]Welcome to my Terminal Portfolio]\n")
+    .echo("<white>Welcome to my Terminal Portfolio</white>\n")
     .resume();
 }
 
@@ -241,7 +264,7 @@ function hex(color) {
 }
 
 function trim(str) {
-  return str.replace(/[\n\s]+$/, '');
+  return str.replace(/[\n\s]+$/, "");
 }
 
 $.terminal.new_formatter(function (string) {
@@ -249,3 +272,7 @@ $.terminal.new_formatter(function (string) {
     return `[[;white;]${command}] [[;aqua;]${args}]`;
   });
 });
+
+$.terminal.xml_formatter.tags.blue = (attrs) => {
+  return `[[;#55F;;${attrs.class}]`;
+};
