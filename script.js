@@ -167,6 +167,7 @@ const formatted_list = command_list.map((cmd) => {
 });
 
 const help = formatter.format(formatted_list);
+
 const term = $("body").terminal(commands, {
   greetings: false,
   checkArity: false,
@@ -195,11 +196,11 @@ const re = new RegExp(`^\s*(${command_list.join("|")}) (.*)`);
 // Colors and renders
 function render(text) {
   const cols = term.cols();
-  return figlet.textSync(text, {
+  return trim(figlet.textSync(text, {
     font: font,
     width: cols,
     whitespaceBreak: true,
-  });
+  }));
 }
 
 function rand(max) {
@@ -210,7 +211,7 @@ function ready() {
   const seed = rand(256);
   term
     .echo(() => rainbow(render("Terminal Portfolio"), seed))
-    .echo("[[;white;]Welcome to my Terminal Portfolio]")
+    .echo("[[;white;]Welcome to my Terminal Portfolio]\n")
     .resume();
 }
 
@@ -236,6 +237,10 @@ function hex(color) {
       })
       .join("")
   );
+}
+
+function trim(str) {
+  return str.replace(/[\n\s]+$/, '');
 }
 
 $.terminal.new_formatter(function (string) {
