@@ -27,7 +27,8 @@ const help = formatter.format(formatted_list);
 const term = $("body").terminal(commands, {
   greetings: false,
   checkArity: false,
-  exit: false
+  exit: false,
+  completion: true
 });
 
 const re = new RegExp(`^\s*(${command_list.join('|')}) (.*)`);
