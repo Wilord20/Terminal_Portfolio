@@ -1,6 +1,13 @@
 const font = "Larry 3D";
 const root = '~';
 let cwd = root;
+const user = 'guest';
+const server = 'freecodecamp.org';
+
+function prompt() {
+    return `[[;#44D544;]${user}@${server}]:[[;blue;]${cwd}$] `;
+}
+
 const formatter = new Intl.ListFormat("en", {
   style: "long",
   type: "conjunction",
@@ -41,7 +48,8 @@ const term = $("body").terminal(commands, {
   greetings: false,
   checkArity: false,
   exit: false,
-  completion: true
+  completion: true,
+  prompt
 });
 
 const re = new RegExp(`^\s*(${command_list.join('|')}) (.*)`);
