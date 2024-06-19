@@ -18,7 +18,7 @@ const commands = {
 
 const command_list = ['clear'].concat(Object.keys(commands));
 const formatted_list = command_list.map(cmd => {
-  return `<white class="command">${cmd}</white>`;
+  return `[[;white;]${cmd}]`;
 });
 
 const help = formatter.format(formatted_list);
