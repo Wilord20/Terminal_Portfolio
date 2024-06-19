@@ -5,6 +5,14 @@ const user = "guest";
 const server = "linkedin.org";
 const url = "https://v2.jokeapi.dev/joke/Programming";
 
+figlet.defaults({ fontPath: "https://unpkg.com/figlet/fonts/" });
+figlet.preloadFonts([font], ready);
+
+const formatter = new Intl.ListFormat("en", {
+  style: "long",
+  type: "conjunction",
+});
+
 const directories = {
   education: [
     "",
@@ -153,13 +161,6 @@ function prompt() {
   return `[[;#44D544;]${user}@${server}]:[[;blue;]${cwd}$] `;
 }
 
-figlet.defaults({ fontPath: "https://unpkg.com/figlet/fonts/" });
-figlet.preloadFonts([font], ready);
-
-const formatter = new Intl.ListFormat("en", {
-  style: "long",
-  type: "conjunction",
-});
 
 const command_list = ["clear"].concat(Object.keys(commands));
 const formatted_list = command_list.map((cmd) => {
