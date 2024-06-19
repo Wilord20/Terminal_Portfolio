@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "figlet": "^1.7.0"
+    "figlet": "^1.7.0",
+    "jquery.terminal": "^2.42.0"
   },
   "name": "terminal_portfolio",
   "version": "1.0.0",

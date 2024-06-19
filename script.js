@@ -12,7 +12,9 @@ const commands = {
     term.echo(`List of available commands: ${help}`);
   },
   echo(...args) {
-      term.echo(args.join(' '));
+    if (args.length > 0) {
+        term.echo(`[[;white;]${args.join(' ')}]`);
+    }
   }
 };
 
@@ -28,9 +30,12 @@ const term = $("body").terminal(commands, {
   exit: false
 });
 
-term.on('click', '.command', function() {
-  const command = $(this).text();
-  term.exec(command);
+const re = new RegExp(`^\s*(${command_list.join('|')}) (.*)`);
+
+$.terminal.new_formatter(function(string) {
+    return string.replace(re, function(_, command, args) {
+        return `[[;white;]${command}] [[;aqua;]${args}]`;
+    });
 });
 
 
