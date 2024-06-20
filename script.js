@@ -1,8 +1,8 @@
 const font = "Larry 3D";
 const root = "~";
 let cwd = root;
-const user = "guest";
-const server = "linkedin.org";
+const user = "user23";
+const server = "user23-HP-114";
 const url = "https://v2.jokeapi.dev/joke/Programming";
 
 figlet.defaults({ fontPath: "https://unpkg.com/figlet/fonts/" });
@@ -14,31 +14,90 @@ const formatter = new Intl.ListFormat("en", {
 });
 
 const directories = {
-  education: [
+  formation: [
     "",
-    "<white>education</white>",
-
-    '* <a href="https://en.wikipedia.org/wiki/Kielce_University_of_Technology">Kielce University of Technology</a> <yellow>"Computer Science"</yellow> 2002-2007 / 2011-2014',
-    '* <a href="https://pl.wikipedia.org/wiki/Szko%C5%82a_policealna">Post-secondary</a> Electronic School <yellow>"Computer Systems"</yellow> 2000-2002',
-    '* Electronic <a href="https://en.wikipedia.org/wiki/Technikum_(Polish_education)">Technikum</a> with major <yellow>"RTV"</yellow> 1995-2000',
-    "",
-  ],
-  projects: [
-    "",
-    "<white>Open Source projects</white>",
+    "<white>JavaScript - HTML/CSS</white>",
     [
       [
-        "jQuery Terminal",
-        "https://terminal.jcubic.pl",
-        "library that adds terminal interface to websites",
+        "Back End Development and APIs",
+        "https://www.freecodecamp.org/certification/fcca1096821-80d5-4b02-9374-415db363c5e3/back-end-development-and-apis",
+        "Back end apps with Node.js and npm, Express Framework, MongoDB and Mongoose library",
       ],
       [
-        "LIPS Scheme",
-        "https://lips.js.org",
-        "Scheme implementation in JavaScript",
+        "JavaScript Algorithms and Data Structures",
+        "https://freecodecamp.org/certification/fcca1096821-80d5-4b02-9374-415db363c5e3/javascript-algorithms-and-data-structures-v8",
+        "Fundamentals, OOP, Functional Programming, local storage and APIs",
       ],
-      ["Sysend.js", "https://jcu.bi/sysend", "Communication between open tabs"],
-      ["Wayne", "https://jcu.bi/wayne", "Pure in browser HTTP requests"],
+      [
+        "The Origins: JavaScript III",
+        "https://www.credential.net/5aec68fd-6a30-418b-a774-a94d0d8d8fa8",
+        "Fundamentals and use of APIs",
+      ],
+      [
+        "Responsive Web Design",
+        "https://freecodecamp.org/certification/fcca1096821-80d5-4b02-9374-415db363c5e3/responsive-web-design",
+        "Fundamentals HTML and CSS",
+      ]
+    ].map(([name, url, description = ""]) => {
+      return `* <a href="${url}">${name}</a> &mdash; <white>${description}</white>`;
+    }),
+    "",
+    "<white>Python</white>",
+    [
+      [
+        "Python 3, Django, Flask and Tkinter",
+        "https://www.udemy.com/certificate/UC-6da717e5-6343-41b1-a7b7-d1f22a28bafb/",
+        "Fundamentals of Python, Data Structures and Web Development with Django",
+      ]
+    ].map(([name, url, description = ""]) => {
+      return `* <a href="${url}">${name}</a> &mdash; <white>${description}</white>`;
+    }),
+    "",
+    "<white>Spring, Java and MS</white>",
+    [
+      [
+        "Angular",
+        "https://www.udemy.com/certificate/UC-9f3378d4-9ddd-4dfd-b68c-8ed34896bf40/",
+        "Use of Angular, Web Development",
+      ],
+      [
+        "Microservices with Spring Boot and Spring Cloud",
+        "https://www.udemy.com/certificate/UC-c5a38eaa-ac17-432e-8387-54dd4719210f/",
+        "How to implement Spring Cloud in our solution, creation of MS",
+      ],
+      [
+        "Spring Boot 2 and Spring Framework 5",
+        "https://www.udemy.com/certificate/UC-ad39c8b5-36dd-4dca-909c-a1d37436a30a",
+        "How to use both, the fundamentals and use cases",
+      ],
+      [
+        "Kubernetes",
+        "https://www.udemy.com/certificate/UC-bba3cc6a-7ea8-41cb-9e61-06b3db1d02b7/",
+        "Dockers, YAML files and setting up Kubernetes through Bash",
+      ]
+    ].map(([name, url, description = ""]) => {
+      return `* <a href="${url}">${name}</a> &mdash; <white>${description}</white>`;
+    }),
+  ].flat(),
+  projects: [
+    "",
+    "<white>Projects</white>",
+    [
+      [
+        "This Terminal",
+        "https://github.com/Wilord20/Terminal_Portfolio",
+        "A project to test my acquired knowledge usign JS, HTML/CSS, Node.js, npm and others",
+      ],
+      [
+        "Pokedex",
+        "Heres the link",
+        "One of the final projects of freeCodeCamp. I use PokeAPI and HTML/CSS to make a perfect functional Pokedex",
+      ],
+      [
+        "Weather",
+        "https://wilord20.github.io/Final-Project-JS/",
+        "Also, one of the final projects of Codedex. A simple web app where you can look up the weather in your location",
+      ],
     ].map(([name, url, description = ""]) => {
       return `* <a href="${url}">${name}</a> &mdash; <white>${description}</white>`;
     }),
@@ -46,17 +105,14 @@ const directories = {
   ].flat(),
   skills: [
     "",
-    "<white>languages</white>",
-
-    ["JavaScript", "TypeScript", "Python", "SQL", "PHP", "Bash"].map(
-      (lang) => `* <yellow>${lang}</yellow>`
-    ),
+    "<white>Languages</white>",
+    ["JS", "Python", "SQL", "Java", "Bash", "C#", "HTML/CSS", "Mongo"].map((lang) => `* <yellow>${lang}</yellow>`),
     "",
-    "<white>libraries</white>",
-    ["React.js", "Redux", "Jest"].map((lib) => `* <green>${lib}</green>`),
+    "<white>Libraries/Frameworks</white>",
+    ["Django", "Jest", "Angular", "Spring", "mongoose", "Express", "tkinter"].map((lib) => `* <green>${lib}</green>`),
     "",
-    "<white>tools</white>",
-    ["Docker", "git", "GNU/Linux"].map((lib) => `* <blue>${lib}</blue>`),
+    "<white>Tools</white>",
+    ["Docker", "git", "GNU/Linux", "Kubernetes", "Docker"].map((tool) => `* <blue>${tool}</blue>`),
     "",
   ].flat(),
 };
@@ -231,7 +287,7 @@ function rand(max) {
   return Math.floor(Math.random() * (max + 1));
 }
 
-const intro = `Welcome to my terminal.\nHere you can see projects where I've working on\nand some other skills I have.\nYou can start typing or clicking <white class="command">help</white> to see the commands.`;
+const intro = `Welcome to my terminal, I'm Edgar.\nHere you can see projects where I've working on and other skills I have.\nYou can start typing or clicking <white class="command">help</white> to see the commands.`;
 
 console.log(intro)
 
@@ -241,7 +297,7 @@ function ready() {
   const seed = rand(256);
   term
     .echo(() => rainbow(render("Portfolio"), seed))
-    .echo('\n<white>Edgar Torres</white> <a href="https://www.linkedin.com/in/edgar-yael-torres-sánchez-471448238/">Linkedin</a> <a href="https://github.com/Wilord20">GitHub</a>\n')
+    .echo('\n<a href="https://www.linkedin.com/in/edgar-yael-torres-sánchez-471448238/">&#128188;Linkedin</a> <a href="https://github.com/Wilord20">&#128187;GitHub</a>\n')
     .resume();
 }
 
