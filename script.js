@@ -112,7 +112,7 @@ const directories = {
     ["Django", "Jest", "Angular", "Spring", "mongoose", "Express", "tkinter"].map((lib) => `* <green>${lib}</green>`),
     "",
     "<white>Tools</white>",
-    ["Docker", "git", "GNU/Linux", "Kubernetes", "Docker"].map((tool) => `* <blue>${tool}</blue>`),
+    ["Docker", "git", "GNU/Linux", "Kubernetes", "Docker"].map((tool) => `* [[;blue;]${tool}]`),
     "",
   ].flat(),
 };
@@ -289,8 +289,6 @@ function rand(max) {
 
 const intro = `Welcome to my terminal, I'm Edgar.\nHere you can see projects where I've working on and other skills I have.\nYou can start typing or clicking <white class="command">help</white> to see the commands.`;
 
-console.log(intro)
-
 term.echo(intro, { typing: true, delay: 10 });
 
 function ready() {
@@ -335,6 +333,3 @@ $.terminal.new_formatter(function (string) {
   });
 });
 
-$.terminal.xml_formatter.tags.blue = (attrs) => {
-  return `[[;#55F;;${attrs.class}]`;
-};
