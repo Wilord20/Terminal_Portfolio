@@ -231,11 +231,17 @@ function rand(max) {
   return Math.floor(Math.random() * (max + 1));
 }
 
+const intro = `Welcome to my terminal.\nHere you can see projects where I've working on\nand some other skills I have.\nYou can start typing or clicking <white class="command">help</white> to see the commands.`;
+
+console.log(intro)
+
+term.echo(intro, { typing: true, delay: 10 });
+
 function ready() {
   const seed = rand(256);
   term
-    .echo(() => rainbow(render("Terminal Portfolio"), seed))
-    .echo("<white>Welcome to my Terminal Portfolio</white>\n")
+    .echo(() => rainbow(render("Portfolio"), seed))
+    .echo('\n<white>Edgar Torres</white> <a href="https://www.linkedin.com/in/edgar-yael-torres-sánchez-471448238/">Linkedin</a> <a href="https://github.com/Wilord20">GitHub</a>\n')
     .resume();
 }
 
