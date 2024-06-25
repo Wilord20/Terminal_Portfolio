@@ -90,8 +90,8 @@ const directories = {
       ],
       [
         "Pokedex",
-        "Heres the link",
-        "One of the final projects of freeCodeCamp. I use PokeAPI and HTML/CSS to make a perfect functional Pokedex",
+        "https://github.com/Wilord20/Pokedex",
+        "One of the final projects of freeCodeCamp. I use PokeAPI and HTML/CSS to make a functional Pokedex",
       ],
       [
         "Weather",
@@ -287,7 +287,7 @@ function rand(max) {
   return Math.floor(Math.random() * (max + 1));
 }
 
-const intro = `Welcome to my terminal, I'm Edgar.\nHere you can see projects where I've working on and other skills I have.\nYou can start typing or clicking <white class="command">help</white> to see the commands.`;
+const intro = `Welcome to my terminal, I'm Edgar.\nHere you can see the projects I have worked on, learned and the skills I have.\nYou can start typing or clicking <white class="command">help</white> to see the commands.`;
 
 term.echo(intro, { typing: true, delay: 10 });
 
