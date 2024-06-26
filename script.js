@@ -90,7 +90,7 @@ const directories = {
       ],
       [
         "Pokedex",
-        "https://github.com/Wilord20/Pokedex",
+        "https://wilord20.github.io/Pokedex/",
         "One of the final projects of freeCodeCamp. I use PokeAPI and HTML/CSS to make a functional Pokedex",
       ],
       [
