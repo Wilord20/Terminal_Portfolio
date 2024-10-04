@@ -98,6 +98,11 @@ const directories = {
         "https://wilord20.github.io/Final-Project-JS/",
         "Also, one of the final projects of Codedex. A simple web app where you can look up the weather in your location",
       ],
+      [
+        "Full-fledged Booking App using the MERN stack",
+        "https://github.com/Wilord20/MERN-Booking-Web",
+        "A Web similar to Booking.com, where you can book hotels, flights and cars. It uses MongoDB, Express, React and Node.js",
+      ],
     ].map(([name, url, description = ""]) => {
       return `* <a href="${url}">${name}</a> &mdash; <white>${description}</white>`;
     }),
